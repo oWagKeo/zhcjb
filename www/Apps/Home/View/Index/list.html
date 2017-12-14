@@ -1,0 +1,42 @@
+<style type="text/css" >
+    input:-ms-input-placeholder{
+        font-size: 0.36rem;
+        color: #999999;
+    }
+    input::-webkit-input-placeholder{
+        font-size: 0.36rem;
+        color: #999999;
+    }
+</style>
+<div class="divCss" id="listPage">
+    <div class="top" onclick="window.history.back(1)">
+    <if condition="$mark eq 'list'">
+        {$nav[$_GET['type']-1]}
+    <else/>
+        搜索结果
+    </if>
+    </div>
+    <div class="list" data-type="{$_GET.type}">
+        <ul class="ul1">
+            <if condition="empty($info)">
+                <span id="empty">暂无数据</span>
+            <else />
+            <volist name="info" id="vo">
+                <li onclick="window.location.href='__URL__/info/gid/{$vo.g_id}'">
+                    <a href="__URL__/info/type/{$_GET['type']}/gid/{$vo.g_id}/mark/{$_GET.type}" style="display: block">
+                    <div class="imgBox">
+                        <img src="{$vo.g_thum}">
+                    </div>
+                    <div class="right">
+                        <div class="title">{$vo.g_name}</div>
+                        <div class="xq">{$vo.g_desc}</div>
+                        <div class="right2"><a href="__URL__/info/gid/{$vo.g_id}" class="getQuan">立即领取</a></div>
+                    </div>
+                    </a>
+                </li>
+            </volist>
+            </if>
+        </ul>
+    </div>
+    <include file="./Apps/Home/View/footer.html" />
+</div>

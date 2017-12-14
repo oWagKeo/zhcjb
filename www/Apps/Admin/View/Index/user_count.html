@@ -1,0 +1,61 @@
+<script src="__JS__/highcharts.js"></script>
+<div class="am-g" style="margin-bottom: 10px">
+    <div class="am-u-sm-12" style="text-align: center">
+        <form class="am-form am-form-inline" action="__URL__/user_count" method="get">
+            <div class="" style="width: 100%;padding-top: 5px"></div>
+            <div class="am-form-group">
+                <input type="date" name="start" value="{$search.start|date='Y-m-d',###}" style="width: 180px;">
+            </div>-
+            <div class="am-form-group">
+                <input type="date" name="end" value="{$search.end|date='Y-m-d',###}" style="width: 180px;">
+            </div>
+            <div class="am-form-group">
+                <input class="am-btn am-btn-primary am-radius am-btn-sm" type="submit" value="搜索">
+            </div>
+        </form>
+    </div>
+</div>
+<div id="container" style="min-width: 100%; height: 400px; margin: 0 auto"></div>
+<script>
+    $(function () {
+        Highcharts.chart('container', {
+            title: {
+                text: '用户统计',
+                x: -20 //center
+            },
+           /* subtitle: {
+                text: 'Source: WorldClimate.com',
+                x: -20
+            },*/
+            xAxis: {
+                categories: {$date}
+            },
+            yAxis: {
+                title: {
+                    text: '人'
+                },
+                plotLines: [{
+                    value: 0,
+                    width: 1,
+                    color: '#808080'
+                }]
+            },
+            tooltip: {
+                valueSuffix: '人'
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'middle',
+                borderWidth: 0
+            },
+            series: [{
+                name: '游客进入量',
+                data: {$n}
+            }, {
+                name: '注册用户量',
+                data: {$u}
+            }]
+        });
+    });
+</script>

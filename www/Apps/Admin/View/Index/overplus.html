@@ -1,0 +1,15 @@
+
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+    <tr>
+        <th>奖品名称</th>
+        <th>剩余数量</th>
+        <th>已发数量</th>
+    </tr>
+    <volist name="info" id="vo">
+        <tr>
+            <td>{$vo.awardname}</td>
+            <td>{$vo.a|default=0}</td>
+            <td>{$vo.b|default=0}</td>
+        </tr>
+    </volist>
+</table>

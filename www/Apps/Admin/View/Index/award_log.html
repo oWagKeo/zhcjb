@@ -1,0 +1,17 @@
+
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover">
+    <tr><td colspan="3" align="right">共有{$count}条数据</td></tr>
+    <tr>
+        <th>用户</th>
+        <th>奖品名称</th>
+        <th>中奖时间</th>
+    </tr>
+    <volist name="info" id="vo">
+        <tr>
+            <td>{$vo.u_name}</td>
+            <td>{$vo.awardname}</td>
+            <td align="center">{$vo.updated|date='Y-m-d H:i:s',###}</td>
+        </tr>
+    </volist>
+    <tr><td colspan="3" align="right">{$page}</td></tr>
+</table>

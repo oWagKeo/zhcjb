@@ -1,0 +1,105 @@
+<script src="__JS__/highcharts.js"></script>
+<!--<div class="am-g" style="margin-bottom: 10px">
+    <div class="am-u-sm-12" style="text-align: center">
+        <form class="am-form am-form-inline" action="__URL__/user_count" method="get">
+            <div class="" style="width: 100%;padding-top: 5px"></div>
+            <div class="am-form-group">
+                <input type="date" name="start" value="{$search.start|date='Y-m-d',###}" style="width: 180px;">
+            </div>-
+            <div class="am-form-group">
+                <input type="date" name="end" value="{$search.end|date='Y-m-d',###}" style="width: 180px;">
+            </div>
+            <div class="am-form-group">
+                <input class="am-btn am-btn-primary am-radius am-btn-sm" type="submit" value="搜索">
+            </div>
+        </form>
+    </div>
+</div>-->
+<div id="container" style="min-width: 100%; height: 800px; margin: 0 auto"></div>
+<script>
+    $(function () {
+        var colors = Highcharts.getOptions().colors,
+        categories = {$type},
+        browserData = [],
+        versionsData = [],
+        i,
+        j,
+        drillDataLen,
+        brightness;
+
+        var data = {$info};
+        var dataLen = data.length;
+        for(var i=0;i<dataLen;i++){
+            data[i].color = colors[i];
+            data[i].drilldown.color = colors[i];
+        }
+        console.log(data);
+        // Build the data arrays
+        for (i = 0; i < dataLen; i += 1) {
+            // add browser data
+            browserData.push({
+                name: categories[i],
+                y: data[i].y,
+                color: data[i].color
+            });
+
+            // add version data
+            drillDataLen = data[i].drilldown.data.length;
+            for (j = 0; j < drillDataLen; j += 1) {
+                brightness = 0.2 - (j / drillDataLen) / 5;
+                versionsData.push({
+                    name: data[i].drilldown.categories[j],
+                    y: data[i].drilldown.data[j],
+                    color: Highcharts.Color(data[i].color).brighten(brightness).get()
+                });
+            }
+        }
+
+        // Create the chart
+        Highcharts.chart('container', {
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: '兑换比例'
+            },
+            yAxis: {
+                title: {
+                    text: 'Total percent market share'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    shadow: false,
+                    center: ['50%', '50%']
+                }
+            },
+            tooltip: {
+                valueSuffix: '%'
+            },
+            series: [{
+                name: '比例',
+                data: browserData,
+                size: '60%',
+                dataLabels: {
+                    formatter: function () {
+                        return this.y > 5 ? this.point.name : null;
+                    },
+                    color: '#ffffff',
+                    distance: -30
+                }
+            }, {
+                name: '比例',
+                data: versionsData,
+                size: '80%',
+                innerSize: '60%',
+                dataLabels: {
+                    formatter: function () {
+                        // display only if larger than 1
+                        return this.y > 1 ? '<b>' + this.point.name + ':</b> ' + this.y + '%' : null;
+                    }
+                }
+            }]
+        });
+    });
+</script>

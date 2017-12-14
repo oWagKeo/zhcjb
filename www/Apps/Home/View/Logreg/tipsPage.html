@@ -1,0 +1,49 @@
+<script src="__JS__/TouchSlide.1.1.js"></script>
+<div class="tipsPage">
+    <div class="time" style="position: absolute;right: 0.5rem;top: 0.5rem;font-size: 0.5rem;color: #fff;z-index: 9999">4S</div>
+    <div id="slideBox2" class="slideBox2">
+        <div class="hd2">
+            <ul></ul>
+        </div>
+        <div class="bd2">
+            <ul>
+                <li><img src="__IMG__/tips.jpg?v1.1"></li>
+                <!--<li><img src="__IMG__/tips.jpg?v1.1"></li>
+                <li style="position: relative"><img src="__IMG__/tips.jpg?v1.1">
+                <div class="toIndex">进入首页</div>
+                </li>-->
+            </ul>
+        </div>
+    </div>
+    <script type="text/javascript">
+        /* jQuery("#slideBox2").slide({ titCell:".hd2 ul",mainCell:".bd2 ul",interTime:3000,effect:"left",autoPlay:true,autoPage:true});*/
+        TouchSlide({
+            slideCell:"#slideBox2",
+            titCell:".hd2 ul", //开启自动分页 autoPage:true ，此时设置 titCell 为导航元素包裹层
+            mainCell:".bd2 ul",
+            interTime:3000,
+            effect:"left",
+            autoPlay:false,//自动播放
+            autoPage:true //自动分页
+            /*switchLoad:"src" //切换加载，真实图片路径为"_src"*/
+        });
+    </script>
+</div>
+
+<script type="text/javascript">
+ /*   $(".toIndex").click(function(){
+        window.location.href="__MODULE__/Index/index"
+    });*/
+    document.addEventListener("touchmove", loadTouch);
+    function loadTouch(e) {
+        e.preventDefault();
+    }
+    var time=4;
+    setInterval(function(){
+        time=time-1;
+        $(".time").html(time+"S");
+        if(time<1){
+            window.location.href="__MODULE__/Index/index"
+        }
+    },1000)
+</script>

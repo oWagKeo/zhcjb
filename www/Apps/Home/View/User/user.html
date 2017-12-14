@@ -1,0 +1,47 @@
+<div class="divCss" id="indexPage">
+<div class="top3">
+    <span class="nick">{$info.u_nick}</span>
+    <div class="quan">
+        <img src="__IMG__/quan.jpg"/>
+        <span class="quan-count">{$g_sum}</span>
+    </div>
+    <div class="gift">
+        <img src="__IMG__/gift.jpg"/>
+        <span class="gift-count">{$a_sum}</span>
+    </div>
+</div>
+    <div class="myCoupon">我的优惠券  <img src="__IMG__/help.png" class="help" onclick="window.location.href='__URL__/help/pageId/3'"></div>
+    <div class="tabMenu">
+        <div class="tab1 tabLi" onclick="window.location.href='__URL__/user/pageId/3/type/1'">我的礼券</div>
+        <div class="tab3 tabLi" onclick="window.location.href='__URL__/user/pageId/3/type/3'">我的奖品</div>
+    </div>
+    <div class="list2 tabNav1">
+            <volist name="goods" id="vo">
+                <if condition="$_GET.type eq 3">
+                    <div class="stamp stamp01" onclick="window.location.href='__URL__/award_info/id/{$vo.id}'">
+                        <div class="imgBox">
+                            <img src="{$vo.awardthum3}">
+                        </div>
+                        <div class="right">
+                            <div class="title">{$vo.awardname}</div>
+                            <div class="xq">{$vo.desc}</div>
+                        </div>
+                    </div>
+                <else/>
+                    <div class="stamp stamp01" onclick="window.location.href='__URL__/goods_info/eid/{$vo.e_id}'">
+                        <div class="imgBox">
+                            <img src="{$vo.g_thum}">
+                        </div>
+                        <div class="right">
+                            <div class="title">{$vo.g_name}</div>
+                            <div class="xq">{$vo.g_desc}</div>
+                        </div>
+                    </div>
+                </if>
+            </volist>
+    </div>
+    <include file="./Apps/Home/View/footer.html" />
+</div>
+<script type="text/javascript">
+    var user_type = '{$_GET.type}';
+</script>

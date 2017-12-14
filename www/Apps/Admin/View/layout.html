@@ -1,0 +1,79 @@
+<!doctype html>
+<html class="no-js fixed-layout" >
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{:C('WEB_NAME')}管理后台</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <link rel="stylesheet" href="__CSS__/amazeui.min.css"/>
+    <link rel="stylesheet" href="__CSS__/admin.css">
+    <link rel="stylesheet" href="__CSS__/style.css">
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="__JS__/jquery.min.js"></script>
+    <!--<![endif]-->
+    <script src="__JS__/amazeui.min.js"></script>
+    <script src="__JS__/app.js"></script>
+</head>
+<body>
+<header class="am-topbar am-topbar-inverse admin-header">
+    <div class="am-topbar-brand">
+        <strong>{:C('WEB_NAME')}管理后台</strong>
+    </div>
+    <button class="am-topbar-btn am-topbar-toggle am-btn am-btn-sm am-btn-success am-show-sm-only" data-am-collapse="{target: '#topbar-collapse'}"><span class="am-sr-only">导航切换</span> <span class="am-icon-bars"></span></button>
+    <div class="am-collapse am-topbar-collapse" id="topbar-collapse">
+        <ul class="am-nav am-nav-pills am-topbar-nav am-topbar-right admin-header-list">
+            <li class="am-dropdown" data-am-dropdown>
+                <a class="am-dropdown-toggle" data-am-dropdown-toggle href="javascript:;">
+                    <span class="am-icon-user"></span> {$header.user_name} <span class="am-icon-caret-down"></span>
+                </a>
+                <ul class="am-dropdown-content">
+                    <li><a href="__MODULE__/Index/rev_pwd"><span class="am-icon-cog"></span> 修改密码</a></li>
+                    <li><a href="__MODULE__/Logreg/logout"><span class="am-icon-power-off"></span> 退出</a></li>
+                </ul>
+            </li>
+            <li class="am-hide-sm-only"><a href="javascript:;" id="admin-fullscreen"><span class="am-icon-arrows-alt"></span> <span class="admin-fullText">开启全屏</span></a></li>
+        </ul>
+    </div>
+</header>
+
+<div class="am-cf admin-main">
+    <!-- sidebar start -->
+    <div class="admin-sidebar am-offcanvas" id="admin-offcanvas">
+        <div class="am-offcanvas-bar admin-offcanvas-bar">
+            <ul class="am-list admin-sidebar-list" id="collapase-nav">
+                <volist name="menu" id="vo">
+                    <notempty name="vo.menu">
+                        <li class="admin-parent">
+                            <a class="am-cf" data-am-collapse="{target: '#collapse-{$key}'}">
+                                <span class="{$vo.icon}"></span> {$vo.name}
+                                <span class="am-icon-angle-right am-fr am-margin-right"></span>
+                            </a>
+                            <ul class="am-list am-collapse admin-sidebar-sub" id="collapse-{$key}">
+                                <volist name="vo.menu" id="v">
+                                    <li>
+                                        <a href="{$v.2}" class="am-cf">
+                                            <span class="{$v.3}"></span> {$v.1}
+                                        </a>
+                                    </li>
+                                </volist>
+                            </ul>
+                        </li>
+                    </notempty>
+                </volist>
+            </ul>
+        </div>
+    </div>
+    <!-- sidebar end -->
+    <!-- content start -->
+    <div class="admin-content"  style="overflow: scroll;">
+        {$nav}{__CONTENT__}
+        <!--<footer class="admin-content-footer">
+            <hr>
+        </footer>-->
+    </div>
+    <!-- content end -->
+</div>
+<a href="#" class="am-icon-btn am-icon-th-list am-show-sm-only admin-menu" data-am-offcanvas="{target: '#admin-offcanvas'}"></a>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<form id="form" action="__URL__/award_{$action}_save" method="post" class="am-form am-form-horizontal" enctype="multipart/form-data">
+    <div class="am-form-group am-form-file">
+        <label class="am-u-sm-2 am-form-label">缩略图1</label>
+        <div class="am-u-sm-3">
+            <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+            <input style="height: 35px;" id="doc-form-file1" name="pic[]" type="file" accept="image/jpeg,image/jpg,image/png">
+        </div>
+        <div class="am-u-sm-7"><img id="thum1" src="{$info.awardthum1}" width="80px"></div>
+    </div>
+
+    <div class="am-form-group am-form-file">
+        <label class="am-u-sm-2 am-form-label">缩略图2</label>
+        <div class="am-u-sm-3">
+            <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+            <input style="height: 35px;" id="doc-form-file2"  name="pic[]" type="file" accept="image/jpeg,image/jpg,image/png">
+        </div>
+        <div class="am-u-sm-7"><img id="thum2" src="{$info.awardthum2}" width="80px"></div>
+    </div>
+
+    <div class="am-form-group am-form-file">
+        <label class="am-u-sm-2 am-form-label">缩略图3</label>
+        <div class="am-u-sm-3">
+            <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+            <input style="height: 35px;" id="doc-form-file3"  name="pic[]" type="file" accept="image/jpeg,image/jpg,image/png">
+        </div>
+        <div class="am-u-sm-7"><img id="thum3" src="{$info.awardthum3}" width="80px"></div>
+    </div>
+
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">奖品名称</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="name" value="{$info.awardname}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">明细</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="desc" value="{$info.desc}" required>
+        </div>
+        <div class="am-u-sm-5"> </div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">详情</label>
+        <div class="am-u-sm-5">
+            <textarea name="awardinfo">{$info.awardinfo}</textarea>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">奖品数量</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="num" value="{$info.num}" required>
+        </div>
+        <div class="am-u-sm-5"> </div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">中奖概率（万分之）</label>
+        <div class="am-u-sm-5">
+            <input type="text"  name="chance" value="{$info.chance}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">优惠券id</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="awardid" value="{$info.awardid}" >
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">优惠券链接</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="awardurl" value="{$info.awardurl}" >
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <input type="hidden" name="id" value="{$info.id}">
+            <button type="submit" class="am-btn am-btn-primary">保存</button>
+        </div>
+    </div>
+</form>
+<div id="container" style="display: none"></div>
+<script>
+//    $('#collapse-goods').collapse({toggle: true});
+    //图片预览
+    $("#doc-form-file1").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#thum1").attr("src", objUrl) ;
+        }
+    }) ;
+    $("#doc-form-file2").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#thum2").attr("src", objUrl) ;
+        }
+    }) ;
+$("#doc-form-file3").change(function(){
+    var objUrl = getObjectURL(this.files[0]) ;
+    console.log("objUrl = "+objUrl) ;
+    if (objUrl) {
+        $("#thum3").attr("src", objUrl) ;
+    }
+}) ;
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+</script>

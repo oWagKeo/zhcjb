@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"/>
+    <meta name="screen-orientation" content="portrait">
+    <meta name="x5-orientation" content="portrait">
+    <meta name="x5-page-mode" content="portrait">
+    <meta name="HandheldFriendly" content="true">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="MobileOptimized" content="320">
+    <title>邮储—场景宝</title>
+    <script>
+        var __url__ = '__URL__';
+        var __img__ = '__IMG__';
+        var __js__ = '__JS__';
+        var __css__ = '__CSS__';
+        var __module__ = '__MODULE__';
+    </script>
+    <script src="__JS__/jquery.js"></script>
+    <script src="__JS__/SuperSlide.js"></script>
+    <link href="__CSS__/style.css?v1.12" rel="stylesheet">
+    <link href="__CSS__/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="__CSS__/font-awesome.min.css">
+</head>
+<body>
+{__CONTENT__}
+
+<!--弹窗-->
+<div id="container" style="display: none !important;"></div>
+<div id="alert" class="modal">
+    <div id="alertinfo">
+        <div id="contentpage"></div>
+        <div id="buttonpage"><span id="sureBtn" onclick="closeAlert()">确 定</span></div>
+    </div>
+</div>
+<div id="background-image">
+    <div id="jumpLogingImg"><span>跳过 </span><span class="second"> 3</span><span>s</span></div>
+    <img src="../../../Public/img/loging.jpg"/>
+</div>
+</body>
+<script src="__JS__/Tool.js"></script>
+<script>
+    (function() {
+        function handleFontSize() {
+            // 设置网页字体为默认大小
+            WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+            // 重写设置网页字体大小的事件
+            WeixinJSBridge.on('menu:setfont', function() {
+                WeixinJSBridge.invoke('setFontSizeCallback', { 'fontSize' : 0 });
+            });
+        }
+    })();
+</script>
+<script src="__JS__/gameE_min.js"></script>
+<script src="__JS__/Game.js?v1.12"></script>
+</html>

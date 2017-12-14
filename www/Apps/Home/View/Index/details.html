@@ -1,0 +1,25 @@
+<div class="divCss" id="listPage" style="background: #f1f1f1">
+    <div class="top" onclick="window.history.back(1)">{$info.g_name}</div>
+    <div class="topBanner">
+        <img src="{$info.g_thum}">
+    </div>
+
+    <div class="center2">
+        <div class="centerBan1">
+            <span class="span2">{$info.g_desc}</span>
+        </div>
+        <div class="centerBan3">
+            <input id="mark" type="hidden" value="0">
+            <input class="numInput" type="hidden" value="1">
+            <div class="exchange" data-id="{$info.g_id}"></div>
+        </div>
+    </div>
+    <div class="center3">
+        <div class="ruleTitle">
+            使用规则
+        </div>
+        <div class="ruleBox">
+            {$info.g_info}
+        </div>
+    </div>
+</div>

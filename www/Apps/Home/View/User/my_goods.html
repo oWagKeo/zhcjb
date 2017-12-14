@@ -1,0 +1,19 @@
+<div class="divCss" id="listPage">
+    <div class="top2" onclick="window.location.href='__URL__/user/pageId/3'">我的优惠券</div>
+    <div class="list2">
+        <ul>
+            <volist name="info" id="vo">
+                <li onclick="window.location.href='__URL__/goods_info/eid/{$vo.e_id}'">
+                    <div class="imgBox">
+                        <img src="{$vo.g_thum}">
+                    </div>
+                    <div class="right">
+                        <div class="title">{$vo.g_name}</div>
+                        <div class="xq">{$vo.g_desc}</div>
+                        <div class="num">有效期   {$vo.g_term}</div>
+                    </div>
+                </li>
+            </volist>
+        </ul>
+    </div>
+</div>

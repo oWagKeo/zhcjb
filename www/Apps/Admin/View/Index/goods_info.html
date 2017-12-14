@@ -1,0 +1,148 @@
+<form id="form" action="__URL__/goods_{$action}_save" method="post" class="am-form am-form-horizontal" enctype="multipart/form-data">
+    <div class="am-form-group am-form-file">
+        <label class="am-u-sm-2 am-form-label">缩略图</label>
+        <div class="am-u-sm-3">
+            <button type="button" class="am-btn am-btn-primary am-btn-sm">
+                <i class="am-icon-cloud-upload"></i> 选择要上传的文件</button>
+            <input id="doc-form-file"  name="pic" type="file" accept="image/jpeg,image/jpg,image/png">
+        </div>
+        <div class="am-u-sm-7"><img id="thum" src="{$info.g_thum}" width="180px"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">合作方</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="name" value="{$info.g_name}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">明细</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="desc" value="{$info.g_desc}" required>
+        </div>
+        <div class="am-u-sm-5"> </div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">详情</label>
+        <div class="am-u-sm-5">
+             <textarea name="info">{$info.g_info}</textarea>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">有效期</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="term" value="{$info.g_term}" placeholder="填写劵的有效使用期限" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">剩余兑换数量</label>
+        <div class="am-u-sm-5">
+            <input type="number" min="0" name="count" value="{$info.g_count}">
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <!--<div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">剩余免费兑换数量</label>
+        <div class="am-u-sm-5">
+            <input type="number" min="0" name="free" value="{$info.g_free}">
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>-->
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">优惠券id</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="couponid" value="{$info.g_couponid}"  >
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">优惠券链接</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="g_url" value="{$info.g_url}" >
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">上架时间</label>
+        <div class="am-u-sm-5">
+            <if condition="$action eq add">
+                <input type="datetime-local" name="start" value="{$time|date='Y-m-dTH:i',###|str_replace='CS','',###}" required>
+                <else />
+                <input type="datetime-local" name="start" value="{$info.g_start|date='Y-m-dTH:i',###|str_replace='CS','',###}" required>
+            </if>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">下架时间</label>
+        <div class="am-u-sm-5">
+            <if condition="$action eq add">
+                <input type="datetime-local" name="end" value="{$time|date='Y-m-dTH:i',###|str_replace='CS','',###}" required>
+                <else/>
+                <input type="datetime-local" name="end" value="{$info.g_end|date='Y-m-dTH:i',###|str_replace='CS','',###}" required>
+            </if>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">类型</label>
+        <div class="am-u-sm-5">
+            <select name="type" id="type">
+                <volist name="type" id="vo">
+                    <option value="{$i}">{$vo}</option>
+                </volist>
+            </select>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">状态</label>
+        <div class="am-u-sm-5">
+            <select name="show" id="show">
+                <option value="1">上架</option>
+                <option value="0">下架</option>
+            </select>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <input type="hidden" name="id" value="{$info.g_id}">
+            <button type="submit" class="am-btn am-btn-primary">保存</button>
+        </div>
+    </div>
+</form>
+<div id="container" style="display: none"></div>
+<script>
+    $('#collapse-goods').collapse({toggle: true});
+    //图片预览
+    $("#doc-form-file").change(function(){
+        var objUrl = getObjectURL(this.files[0]) ;
+        console.log("objUrl = "+objUrl) ;
+        if (objUrl) {
+            $("#thum").attr("src", objUrl) ;
+        }
+    }) ;
+    //建立一個可存取到該file的url
+    function getObjectURL(file) {
+        var url = null ;
+        if (window.createObjectURL!=undefined) { // basic
+            url = window.createObjectURL(file) ;
+        } else if (window.URL!=undefined) { // mozilla(firefox)
+            url = window.URL.createObjectURL(file) ;
+        } else if (window.webkitURL!=undefined) { // webkit or chrome
+            url = window.webkitURL.createObjectURL(file) ;
+        }
+        return url ;
+    }
+</script>
+<if condition="$action eq 'edit'">
+    <script>
+        $(function () {
+            $("#show option[value = '{$info.g_show}']").attr('selected',true);
+            $("#type option[value = '{$info.g_type}']").attr('selected',true);
+        })
+    </script>
+</if>

@@ -1,0 +1,91 @@
+<div class="divCss" id="indexPage">
+    <div class="banner">
+        <img src="__IMG__/banner.jpg?v1.12">
+        <div class="searchBox">
+            <input class="searchName" type="text">
+            <div class="searchBtn"><img class="search" src="__IMG__/icon/search.png"/></div>
+        </div>
+        <!--<div class="phoneBill" onclick="window.location.href='__URL__/goods_list/type/1'">  </div>-->
+        <!--<div class="flow" onclick="window.location.href='__URL__/goods_list/type/2'">  </div>-->
+        <!--<div class="video" onclick="window.location.href='__URL__/goods_list/type/3'">  </div>-->
+        <!--<div class="game" onclick="window.location.href='__URL__/goods_list/type/5'">  </div>-->
+        <div class="novel" onclick="window.location.href='__URL__/goods_list/type/1'">  </div>
+        <div class="shopping" onclick="window.location.href='__URL__/goods_list/type/2'">  </div>
+        <div class="outing" onclick="window.location.href='__URL__/goods_list/type/3'">  </div>
+        <div class="familyWork" onclick="window.location.href='__URL__/goods_list/type/4'">  </div>
+        <div class="movie" onclick="window.location.href='__URL__/goods_list/type/5'">  </div>
+        <div class="soldOut" onclick="window.location.href='__URL__/goods_list/type/6'">  </div>
+        <!--<div class="seeding" onclick="window.location.href='__URL__/goods_list/type/11'">  </div>-->
+    </div>
+    <div class="slide">
+        <img class="titleImg" src="__IMG__/title.png?v1.12">
+        <div class="slideBox">
+            <div class="hd">
+            <ul>
+                <li></li><li></li>
+            </ul>
+            </div>
+            <div class="bd">
+                <ul class="ul1">
+                    <li>
+                        <img src="__IMG__/1_03.jpg?v1.1">
+                        <div class="title2"></div>
+                    </li>
+                    <li>
+                        <img src="__IMG__/1_05.jpg?v1.1">
+                        <div class="title2"></div>
+                    </li>
+                    <li>
+                        <img src="__IMG__/1_07.jpg?v1.1">
+                        <div class="title2"></div>
+                    </li>
+
+                    <li>
+                        <img src="__IMG__/2_03.jpg">
+                        <div class="title2"></div>
+                    </li>
+                    <li>
+                    <img src="__IMG__/2_05.jpg" onclick="window.location.href='http://wx.cdh5.cn/3150/'">
+                    <div class="title2"></div>
+                </li>
+                    <li>
+                        <img src="__IMG__/2_07.jpg">
+                        <div class="title2"></div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <script type="text/javascript"> jQuery(".slideBox").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:true,vis:3,scroll:3});</script>
+    </div>
+    <div class="list" data-type="0">
+        <volist name="info" id="vo" key="k">
+            <div class="stamp stamp01" onclick="window.location.href='__URL__/info/gid/{$vo.g_id}'">
+                <div class="imgBox">
+                    <img src="{$vo.g_thum}">
+                </div>
+                <div class="right">
+                    <div class="title">{$vo.g_name}</div>
+                    <div class="xq">{$vo.g_desc}</div>
+                    <div class="right2"><a href="__URL__/info/gid/{$vo.g_id}" class="getQuan">立即领取</a></div>
+                </div>
+            </div>
+        </volist>
+    </div>
+    <include file="./Apps/Home/View/footer.html" />
+</div>
+<div class="zhezhao divcss">
+    <div class="whichCard">
+        <div class="w_closeBox">
+            <div class="w_close"></div>
+        </div>
+        <div class="w_nr">
+            <div class="w_title">选择支付方式</div>
+            <ul class="w_ul">
+                <li>借记卡</li>
+                <li>信用卡</li>
+                <li>优友宝</li>
+            </ul>
+            <div class="w_sureBtn">确认</div>
+        </div>
+    </div>
+</div>

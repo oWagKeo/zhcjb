@@ -1,0 +1,90 @@
+<div class="am-g" style="margin-bottom: 10px">
+    <div class="am-u-sm-12" style="text-align: center">
+        <form class="am-form am-form-inline" action="__URL__/user_list" method="get">
+            <div class="" style="width: 100%;padding-top: 5px"></div>
+            <div class="am-form-group">
+                <input type="text" name="user" value="{$search.user}" placeholder="用户名" style="width: 150px;">
+            </div>
+            <div class="am-form-group">
+                <input type="text" name="phone" value="{$search.phone}" placeholder="电话" style="width: 150px;">
+            </div>
+            <div class="am-form-group">
+                <input class="am-btn am-btn-primary am-radius am-btn-sm" type="submit" value="搜索">
+            </div>
+        </form>
+    </div>
+</div>
+<table class="am-table am-table-bordered am-table-radius am-table-striped am-table-hover am-table-compact">
+    <empty name="info">
+        <tr><th>暂无数据</th></tr>
+    <else />
+        <tr><td colspan="9" align="right">共有{$count}条数据</td></tr>
+        <tr>
+            <th>序列</th>
+            <th>用户名</th>
+            <th>电话</th>
+            <th>注册时间</th>
+            <th>编辑</th>
+            <th>移除</th>
+        </tr>
+        <volist name="info" id="vo" key="i">
+            <tr>
+                <td>{$i}</td>
+                <td>{$vo.u_name|default="<span style='color: red'>未注册</span>"}</td>
+                <td>{$vo.u_phone|default="<span style='color: red'>未注册</span>"}</td>
+                <td align="center">{$vo.u_create|date='Y-m-d H:i:s',###}</td>
+                <td align="center">
+                    <a href="__URL__/user_info/uid/{$vo.u_id}" title="编辑" name="score"><span class="am-icon-edit am-icon-sm"></span></a>&nbsp;
+                </td>
+                <td align="center">
+                    <a data-name="{$vo.u_name}" data-id="{$vo.u_id}" title="移除"  name="remove"><span class="am-icon-trash am-icon-sm "></span></a>&nbsp;
+                </td>
+            </tr>
+        </volist>
+        <tr align="center">
+            <td colspan="13">{$page}</td>
+        </tr>
+    </empty>
+</table>
+
+<div class="am-modal am-modal-confirm" tabindex="-1" id="my-confirm">
+    <div class="am-modal-dialog">
+        <div class="am-modal-hd">提示信息</div>
+        <div class="am-modal-bd">
+           确定要删除这条记录吗？
+        </div>
+        <div class="am-modal-footer">
+            <span class="am-modal-btn" data-am-modal-cancel>取消</span>
+            <span class="am-modal-btn" data-am-modal-confirm>确定</span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $("#reg option[value = '{$search.reg}']").attr('selected',true);
+    })
+
+    $('a[name = "remove"]').click(function () {
+        uid = $(this).attr('data-id');
+        p = $(this).parent().parent();
+        $("#my-confirm .am-modal-bd").text('确定要移除用户['+$(this).attr('data-name')+']吗？');
+        $('#my-confirm').modal({
+            onConfirm: function (options) {
+                $.ajax({
+                    type:'post',
+                    url:'__URL__/user_remove',
+                    data:{uid:uid},
+                    success:function (res) {
+                        if(res == 1){
+                            p.remove();
+                            alert('移除成功');
+                        }else{
+                            alert('移除失败');
+                        }
+                    }
+                })
+            },
+        })
+    })
+</script>

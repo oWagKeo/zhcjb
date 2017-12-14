@@ -1,0 +1,38 @@
+<div class="divCss" id="goodsPage" style="background: #f1f1f1">
+    <div class="top" onclick="window.history.back(1)">个人中心</div>
+    <div class="topBanner">
+        <img src="{$info.g_thum}">
+    </div>
+
+    <div class="center2">
+        <div class="centerBan1">
+            <span class="span1">使用条件  </span>
+            <span class="span2">{$info.g_desc}</span>
+        </div>
+        <if condition="$data.e_link eq ''">
+            <div class="centerBan2">
+                <span class="span3">券码:</span>
+                <span class="span4"> {$data.e_code}</span>
+            </div>
+            <div class="centerBan2">
+                <span class="span3">密码:</span>
+                <span class="span4"> {$data.e_password}</span>
+            </div>
+        <else/>
+            <!--<div class="useBtn" onclick="window.location.href='{$data.e_link}'"></div>-->
+            <div class="useBtn" data-id='{$data.e_id}'></div>
+            <input type="hidden" class="typeInput" value="goods" />
+        </if>
+    </div>
+
+    <div class="center3">
+        <div class="ruleTitle">
+            使用规则
+        </div>
+        <div class="ruleBox">
+            {$info.g_info}
+        </div>
+
+    </div>
+
+</div>

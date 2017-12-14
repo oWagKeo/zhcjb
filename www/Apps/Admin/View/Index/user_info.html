@@ -1,0 +1,46 @@
+<form id="form" action="__URL__/user_save" method="post" class="am-form am-form-horizontal">
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">用户名</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="name" value="{$info.u_name}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <!--<div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">银行卡</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="cardno" value="{$info.u_cardno}" required>
+        </div>
+        <div class="am-u-sm-5"> </div>
+    </div>-->
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">电话</label>
+        <div class="am-u-sm-5">
+            <input type="text" name="phone" value="{$info.u_phone}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+   <!-- <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">积分</label>
+        <div class="am-u-sm-5">
+            <input type="number" min="0" name="score" value="{$info.u_score}" required>
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>
+    <div class="am-form-group">
+        <label class="am-u-sm-2 am-form-label">抽奖次数</label>
+        <div class="am-u-sm-5">
+            <input type="number" min="0" name="lottery" value="{$info.u_lottery}">
+        </div>
+        <div class="am-u-sm-5"></div>
+    </div>-->
+    <div class="am-form-group">
+        <div class="am-u-sm-10 am-u-sm-offset-2">
+            <input type="hidden" name="id" value="{$info.u_id}">
+            <button type="submit" class="am-btn am-btn-primary">保存</button>
+        </div>
+    </div>
+</form>
+<script>
+    $('#collapse-user').collapse({toggle: true});
+</script>
