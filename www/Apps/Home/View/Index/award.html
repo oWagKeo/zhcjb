@@ -29,39 +29,39 @@
        * @type {Array}
        * bj3 背景
        */
-        var imgarr = [];
-        <?php for( $i=0;$i<10;$i++ ){
-          if( $i==0 ){?>
-              imgarr.push({src:"<?php echo $list[$i]['awardthum2'] ?>", id:"btn2a"});
-              imgarr.push({src:"<?php echo $list[$i]['awardthum1'] ?>", id:"btn2b"});
+      var imgarr = [];
+      <?php for( $i=0;$i<10;$i++ ){
+        if( $i==0 ){?>
+          imgarr.push({src:"<?php echo $list[$i]['awardthum2'] ?>", id:"btn2a"});
+          imgarr.push({src:"<?php echo $list[$i]['awardthum1'] ?>", id:"btn2b"});
         <?php  }else{ ?>
-              imgarr.push({src:"<?php echo $list[$i]['awardthum2'] ?>", id:"btn<?php echo $i+4 ?>a"});
-              imgarr.push({src:"<?php echo $list[$i]['awardthum1'] ?>", id:"btn<?php echo $i+4 ?>b"});
+          imgarr.push({src:"<?php echo $list[$i]['awardthum2'] ?>", id:"btn<?php echo $i+4 ?>a"});
+          imgarr.push({src:"<?php echo $list[$i]['awardthum1'] ?>", id:"btn<?php echo $i+4 ?>b"});
         <?php }}?>
-        var imgArr =[
-            {src:__img__+"/bj3.jpg?v1.1", id:"bj3"},
-            {src:__img__+"/btn1.png?v1.1", id:"btn1"},
-            {src:__img__+"/btn1a.png?v1.1", id:"btn1a"},
-            {src:__img__+"/btn3a.png?v1.1", id:"btn3a"},
-            {src:__img__+"/btn3b.png?v1.1", id:"btn3b"},
-            {src:__img__+"/btn4a.png?v1.1", id:"btn4a"},
-            {src:__img__+"/btn4b.png?v1.1", id:"btn4b"},
-        ];
-      var newImgArr = imgArr.concat(imgarr)
-      imgArr = newImgArr
-      console.log('imgArr--2',imgArr)
-//      {src:__img__+"/btn2a.png?v1.1", id:"btn2a"},
-//      {src:__img__+"/btn2b.png?v1.1", id:"btn2b"},
-//      {src:__img__+"/btn5.png?v1.1", id:"btn5"},
-//      {src:__img__+"/btn5a.png?v1.1", id:"btn5a"},
-//      {src:__img__+"/btn6.png?v1.1", id:"btn6"},
-//      {src:__img__+"/btn6a.png?v1.1", id:"btn6a"},
-//      {src:__img__+"/btn7.png?v1.1", id:"btn7"},
-//      {src:__img__+"/btn7a.png?v1.1", id:"btn7a"},
-//      {src:__img__+"/btn8.png?v1.1", id:"btn8"},
-//      {src:__img__+"/btn8a.png?v1.1", id:"btn8a"},
-//      {src:__img__+"/btn9.png?v1.1", id:"btn9"},
-//      {src:__img__+"/btn9a.png?v1.1", id:"btn9a"}
+      var imgArr =[
+        {src:__img__+"/bg-1.png?v1.1", id:"bj3"},
+        {src:__img__+"/btn-2.jpg?v1.1", id:"btn1"},
+        {src:__img__+"/btn-1.png?v1.1", id:"btn1a"},
+        {src:__img__+"/xiexie.png?v1.1", id:"btn3a"},
+        {src:__img__+"/xiexie-1.png?v1.1", id:"btn3b"},
+        {src:__img__+"/xiexie.png?v1.1", id:"btn4a"},
+        {src:__img__+"/xiexie-1.png?v1.1", id:"btn4b"},
+      ];
+      var newImgArr = imgArr.concat(imgarr);
+      imgArr = newImgArr;
+      console.log('imgArr--2',imgArr);
+      //      {src:__img__+"/btn2a.png?v1.1", id:"btn2a"},
+      //      {src:__img__+"/btn2b.png?v1.1", id:"btn2b"},
+      //      {src:__img__+"/btn5.png?v1.1", id:"btn5"},
+      //      {src:__img__+"/btn5a.png?v1.1", id:"btn5a"},
+      //      {src:__img__+"/btn6.png?v1.1", id:"btn6"},
+      //      {src:__img__+"/btn6a.png?v1.1", id:"btn6a"},
+      //      {src:__img__+"/btn7.png?v1.1", id:"btn7"},
+      //      {src:__img__+"/btn7a.png?v1.1", id:"btn7a"},
+      //      {src:__img__+"/btn8.png?v1.1", id:"btn8"},
+      //      {src:__img__+"/btn8a.png?v1.1", id:"btn8a"},
+      //      {src:__img__+"/btn9.png?v1.1", id:"btn9"},
+      //      {src:__img__+"/btn9a.png?v1.1", id:"btn9a"}
     </script>
 </head>
 <body scroll='no' style="overflow: hidden" onload='init();'>
@@ -98,7 +98,7 @@
                 <a href="__MODULE__/Index/index/pageId/1">  <img src="__IMG__/f_01.jpg" class="img1"><img src="__IMG__/f1_01.jpg" class="img2"></a>
             </li>
             <!--<li class="li2">-->
-                <!--<a href="__MODULE__/Index/goods_list/type/free/pageId/2">  <img src="__IMG__/f_02.jpg" class="img1"><img src="__IMG__/f1_02.jpg" class="img2"></a>-->
+            <!--<a href="__MODULE__/Index/goods_list/type/free/pageId/2">  <img src="__IMG__/f_02.jpg" class="img1"><img src="__IMG__/f1_02.jpg" class="img2"></a>-->
             <!--</li>-->
             <li class="li3">
                 <a href="__MODULE__/Index/award/pageId/4">  <img src="__IMG__/f_03.jpg" class="img1"><img src="__IMG__/f1_03.jpg" class="img2"></a>
@@ -110,7 +110,7 @@
     </div>
 
     <script type="text/javascript">
-        var pageId="{$_GET.pageId}";
+      var pageId="{$_GET.pageId}";
     </script>
 </div>
 <div id="container" style="display: none"></div>
@@ -119,35 +119,35 @@
 <script src="__JS__/LC_LoaderBar_class.min.js"></script>
 <script src="__JS__/Tool.js"></script>
 <script type="text/javascript">
-    var __img__ = '__IMG__';
-    var jsArr=["http://res.wx.qq.com/open/js/jweixin-1.0.0.js","__JS__/gameE_min.js","__JS__/lib.js"];
-    var images;
-    var canvas,stage,initX,bgm;
-    var loadBar;
-    var shareType=0;
-    function getE(id){
-        return document.getElementById(id);
-    }
-    function init(){
-        images = images||{};
-        canvas = document.getElementById("canvas");
+  var __img__ = '__IMG__';
+  var jsArr=["http://res.wx.qq.com/open/js/jweixin-1.0.0.js","__JS__/gameE_min.js","__JS__/lib.js"];
+  var images;
+  var canvas,stage,initX,bgm;
+  var loadBar;
+  var shareType=0;
+  function getE(id){
+    return document.getElementById(id);
+  }
+  function init(){
+    images = images||{};
+    canvas = document.getElementById("canvas");
 
-        getE("loadOut").style.width=380*scale+"px";
-        getE("loadOut").style.marginLeft=-190*scale+"px";
-        getE("loadOut").style.display="block";
+    getE("loadOut").style.width=380*scale+"px";
+    getE("loadOut").style.marginLeft=-190*scale+"px";
+    getE("loadOut").style.display="block";
 
-        loadBar=new LC_LoaderBar(function(msg){
-            getE("loadIn").style.width=msg+"%";
-        });
-        loadBar.loadJsArr(jsArr,gameReady,true);
-    }
+    loadBar=new LC_LoaderBar(function(msg){
+      getE("loadIn").style.width=msg+"%";
+    });
+    loadBar.loadJsArr(jsArr,gameReady,true);
+  }
 
-    function gameReady(){
-        stage = new createjs.Stage(canvas);
-        //$("writeInfo").height(brHeight+"px");
-        $("#loadPage").hide();
-        window.initGame();
-    }
+  function gameReady(){
+    stage = new createjs.Stage(canvas);
+    //$("writeInfo").height(brHeight+"px");
+    $("#loadPage").hide();
+    window.initGame();
+  }
 
 
 </script>

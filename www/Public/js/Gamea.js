@@ -8,8 +8,10 @@
         stage.name='stage';
         evtP=document.getElementById("container");
         game=new lib.gamePanel();
+        console.log('game-------',game)
         stage.addChild(game);
-        for (var i=0;i<8;i++){
+        console.log('stage-------',stage)
+      for (var i=0;i<12;i++){
             var j=i+1;
             var p=eval("game.p"+j);
             p.gotoAndStop(1);
@@ -32,7 +34,7 @@
                 return false;
             }
             game.btn.gotoAndStop(1);
-            for (var i=0;i<8;i++){
+            for (var i=0;i<12;i++){
                 var j=i+1;
                 var p=eval("game.p"+j);
                 p.gotoAndStop(1);
@@ -54,6 +56,7 @@
             data:{
             },
             success:function(data){
+                console.log('data---',data)
                 if(!data){
                     alertOverwrite(data.msg)
                 }else{
@@ -80,6 +83,18 @@
                     }else if(data.id==7){
                         nrr=data.awardname;
                         stop=7;
+                    }else if(data.id==8){
+                      nrr=data.awardname;
+                      stop=9;
+                    }else if(data.id==9){
+                      nrr=data.awardname;
+                      stop=10;
+                    }else if(data.id==10){
+                      nrr=data.awardname;
+                      stop=11;
+                    }else if(data.id==11){
+                      nrr=data.awardname;
+                      stop=12;
                     }
                 }
             }
@@ -132,11 +147,11 @@
                 p3.gotoAndStop(1);
             }
             else if(i==1){
-                game.p8.gotoAndStop(1);
+                game.p12.gotoAndStop(1);
             }
         }
         times=times+1;
-        if(me<9){
+        if(me<13){
             me=me+1;
         }
         else{
