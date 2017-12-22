@@ -181,8 +181,7 @@ class IndexController extends CommonController {
 		}else{
 			$has = 1;
 		}
-//		$this->assign('haschance',$has);
-		$this->assign('haschance',1);
+		$this->assign('haschance',$has);
 		$this->assign('list',$list);
 //		$this->assign('user',$user);
 		$this->display();
