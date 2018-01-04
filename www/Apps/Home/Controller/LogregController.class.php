@@ -37,6 +37,11 @@ class LogregController extends Controller {
 	 */
 	public function get_code(){
 		$code = str_pad(rand(0,999999),6,0);
+
+		if( !empty(session('3146_msg_time')) && time()-session('3146_msg_time')<60 ){
+			$this->ajaxReturn(['msg'=>'短信已发送！','res'=>1,'data'=>false]);
+			exit();
+		}
 		session('3146_msg_code',$code);
 		session('3146_msg_time',time()+5*60);
 //		$sms = new Sms();
